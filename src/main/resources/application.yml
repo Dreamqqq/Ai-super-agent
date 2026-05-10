@@ -10,10 +10,14 @@ spring:
 #    password: 123456
   ai:
     # 中转站对话模型配置
+#    chat:
+#      api-key: ${CHAT_API_KEY}
+#      base-url: https://ai.huaibao.top
+#      model: gpt-5.4
     chat:
       api-key: ${CHAT_API_KEY}
-      base-url: https://ai.huaibao.top
-      model: gpt-5.4
+      base-url: https://api.deepseek.com
+      model: deepseek-chat
     # 中转站向量模型配置
     embedding:
       api-key: ${EMBEDDING_API_KEY}
@@ -28,13 +32,11 @@ spring:
     mcp:
       client:
         stdio:
-          servers-configuration: classpath:mcp-servers.json
-        # SSE 已注释：stdio 与 SSE 启动同一个 yu-image-search-mcp-server 会导致 searchImage 工具重复（alt_1_searchImage）
-        # 如需 SSE，请确保它指向不同的 MCP 服务
-        # sse:
-        #   connections:
-        #     server1:
-        #       url: http://localhost:8127
+#          servers-configuration: classpath:mcp-servers.json
+        sse:
+          connections:
+            server1:
+              url: http://localhost:8127
 # 临时注释掉，便于开发调试和部署（实际需要启动 PgVector 数据库）
 #    vectorstore:
 #      pgvector:

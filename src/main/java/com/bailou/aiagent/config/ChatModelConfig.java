@@ -38,7 +38,7 @@ public class ChatModelConfig {
     @Primary
     ChatModel dashScopeChatModel() {
         HttpClient httpClient = HttpClient.newBuilder()
-                .version(HttpClient.Version.HTTP_1_1)
+                .version(HttpClient.Version.HTTP_2)
                 .connectTimeout(Duration.ofSeconds(60))
                 .build();
         ClientHttpRequestFactory requestFactory = new JdkClientHttpRequestFactory(httpClient);
